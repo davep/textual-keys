@@ -42,6 +42,11 @@ class TextualKeys( App[ None ] ):
         padding-left: 1;
     }
 
+    .event Label.noprint {
+        color: $text-muted;
+        text-style: italic;
+    }
+
     .zebra-on {
         background: $surface-lighten-2;
     }
@@ -84,6 +89,21 @@ class TextualKeys( App[ None ] ):
         )
         yield Footer()
 
+    def printed( self, event: Key ) -> Label:
+        """Format the printed representation of the key.
+
+        Args:
+            event (Key): The key event to render.
+
+        Returns:
+            Label: A `Label` for showing the key.
+        """
+        if event.char is None:
+            return Label( "None", classes="noprint" )
+        if event.is_printable:
+            return Label( event.char )
+        return Label( f"Unprintable ({ord( event.char )})", classes="noprint" )
+
     def on_key( self, event: Key ) -> None:
         """Handle a keyboard event.
 
@@ -93,7 +113,7 @@ class TextualKeys( App[ None ] ):
         self.query_one( "#keys", Vertical ).mount(
             Horizontal(
                 Label( event.key ),
-                Label( event.char if event.char is not None and event.is_printable else "" ),
+                self.printed( event ),
                 Label( "\n".join( event.key_aliases ) ),
                 classes=f"event zebra-{'on' if self.zebra else 'off'}"
             ),
