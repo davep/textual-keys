@@ -23,14 +23,19 @@ class TextualKeys( App[ None ] ):
     #titles {
         dock: top;
         height: 1;
+        padding-right: 2;
+        background: $primary;
     }
 
     #titles Label {
         width: 1fr;
-        background: $primary;
         border-left: solid $primary-lighten-2;
         padding-left: 1;
         text-style: bold;
+    }
+
+    #keys {
+        overflow-y: scroll;
     }
 
     .event {
