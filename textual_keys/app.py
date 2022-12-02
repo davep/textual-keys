@@ -101,4 +101,9 @@ class TextualKeys( App[ None ] ):
         )
         self.zebra = not self.zebra
 
+##############################################################################
+def run() -> None:
+    """Main entry point for running the app."""
+    TextualKeys().run()
+
 ### app.py ends here

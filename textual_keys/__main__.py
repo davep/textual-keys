@@ -2,11 +2,11 @@
 
 ##############################################################################
 # Local imports.
-from .app import TextualKeys
+from .app import run
 
 ##############################################################################
 # Main entry point to the app.
 if __name__ == "__main__":
-    TextualKeys().run()
+    run()
 
 ### __main__.py ends here
