@@ -47,7 +47,7 @@ setup(
     packages                      = find_packages(),
     package_data                  = { "textual_keys": [ "py.typed" ] },
     include_package_data          = True,
-    install_requires              = [ "textual" ],
+    install_requires              = [ "textual==0.10.1" ],
     python_requires               = ">=3.8",
     keywords                      = "terminal textual keys",
     entry_points                  = {
