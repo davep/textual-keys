@@ -103,11 +103,11 @@ class TextualKeys( App[ None ] ):
         Returns:
             Label: A `Label` for showing the key.
         """
-        if event.char is None:
+        if event.character is None:
             return Label( "None", classes="noprint" )
         if event.is_printable:
-            return Label( event.char )
-        return Label( f"Unprintable ({ord( event.char )})", classes="noprint" )
+            return Label( event.character )
+        return Label( f"Unprintable ({ord( event.character )})", classes="noprint" )
 
     def on_key( self, event: Key ) -> None:
         """Handle a keyboard event.
@@ -119,7 +119,7 @@ class TextualKeys( App[ None ] ):
             Horizontal(
                 Label( event.key ),
                 self.printed( event ),
-                Label( "\n".join( event.key_aliases ) ),
+                Label( "\n".join( event.aliases ) ),
                 classes=f"event zebra-{'on' if self.zebra else 'off'}"
             ),
             before=0
